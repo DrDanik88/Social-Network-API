@@ -63,6 +63,19 @@ const userController = {
     }
   },
 
+  //Delete a user by using the userID
+  async deleteUser(req, res) {
+    try {
+      const user = await User.findOneAndDelete({ _id: req.params.userId });
+      if (!user) {
+        return res.status(404).json({ message: "ID/User not found, please use a valid ID" });
+      }
+      return res.status(200).json(user);
+    } catch (err) {
+      console.log(err);
+      return res.status(503).json(err);
+    }
+  },
 
   
   // Add a friend to a user using the userID

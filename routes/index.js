@@ -1,8 +1,8 @@
 // Imports
 const router = require('express').Router();
-const userRoutes = require('./userRoutes'); 
+const userRoutes = require('./usersRoutes'); 
 // Import userRoutes directly
-const thoughtRoutes = require('./thoughtRoutes'); 
+const thoughtRoutes = require('./thoughtsRoutes'); 
 // Import thoughtRoutes directly
 
 // Middleware
