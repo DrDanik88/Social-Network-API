@@ -65,6 +65,22 @@ const thoughtController = {
     }
   },
 
+// Delete a Thought by ID
+  async deleteThought(req, res) {
+    try {
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+
+      if (!thought) {
+        return res.status(404).json({ message: "ID/Thought not found, please use a valid ID" });
+      }
+
+      return res.status(200).json(thought);
+    } catch (err) {
+      console.log(err);
+      return res.status(503).json(err);
+    }
+  },
+
 
   // Create reaction
   async createReaction(req, res) {
