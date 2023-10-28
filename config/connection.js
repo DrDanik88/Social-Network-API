@@ -1,17 +1,23 @@
 const mongoose = require('mongoose');
 
-// Connect to the MongoDB database
-mongoose.connect('mongodb://127.0.0.1:27017/social-network-api', {
-   });
-
-// Get the default connection
-const db = mongoose.connection;
-
-// Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// Test the connection
-db.once('open', () => {
+// Function to connect to the MongoDB database
+const connectDatabase = async () => {
+  try {
+    await mongoose.connect('mongodb://127.0.0.1:27017/social-network-api', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('MongoDB connection successful.');
-    db.close();
-});
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+  }
+};
+
+// Export the connection function and the Mongoose connection instance
+module.exports = {
+  connectDatabase,
+  db: mongoose.connection,
+};
+
+
+

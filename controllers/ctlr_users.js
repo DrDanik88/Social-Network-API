@@ -1,5 +1,5 @@
 // Imports User from models
-const { User } = require("../models");
+const User = require('../models/users');
 
 // Get all users from mongoDB
 const userController = {
@@ -36,10 +36,11 @@ const userController = {
   
   // Create a new user
   async createUser(req, res) {
+    console.log("Request to create new user"); // Add this line
     try {
       const user = await User.create(req.body);
       return res.status(200).json(user);
-         } catch (err) {
+    } catch (err) {
       console.log(err);
       return res.status(503).json(err);
     }

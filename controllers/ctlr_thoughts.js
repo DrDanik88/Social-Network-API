@@ -1,5 +1,7 @@
 // Imports User and Thought from models
-const { User, Thought } = require("../models");
+const Thought = require("../models/thoughts");
+const User = require('../models/users');
+
 
 // Get all thoughts in db
 const thoughtController = {

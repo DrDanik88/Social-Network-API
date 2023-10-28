@@ -28,13 +28,7 @@ const userSchema = new Schema(
       },
     ],
   },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-    id: false,
-  }
-);
+ );
 
 
 // Creates User model with userSchema
